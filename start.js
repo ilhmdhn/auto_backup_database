@@ -1,12 +1,12 @@
 const schedule = require('node-schedule');
-const moment = require('moment');
+
 
 schedule.scheduleJob('0 4 * * *', () => {
     try {
-        const currentDate = moment();
-        const newDate = currentDate.subtract(1, 'days');
-        const formattedDate = newDate.format('YYYYMMDD');
-        console.log(formattedDate)
+        backup('ihp_membership');
+        backup('ihp_transaction');
+        backup('ihp_vod_monitor');
+        backup('ihp_report');
     } catch (err) {
         console.log(`
             ERROR
@@ -17,4 +17,3 @@ schedule.scheduleJob('0 4 * * *', () => {
     }
 });
 
-// execute()
