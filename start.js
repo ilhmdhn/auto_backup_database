@@ -1,7 +1,6 @@
 const schedule = require('node-schedule');
 const backup = require('./backup');
 
-
 schedule.scheduleJob('0 4 * * *', () => {
     try {
         backup('ihp_membership');

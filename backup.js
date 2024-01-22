@@ -4,11 +4,10 @@ const fs = require('fs/promises')
 const config = '/home/usersrvc/file/db_config.cfg';
 
 const dir = '/ssdext/backup_database';
-const currentDate = moment();
 
 module.exports = (dbName) =>{
     try {
-
+        const currentDate = moment();
         const newDate = currentDate.subtract(1, 'days');
         const todayBackup = newDate.format('YYYYMMDD');
         const backupName = `${dbName}_${todayBackup}.sql`;
@@ -43,6 +42,7 @@ module.exports = (dbName) =>{
 
 const removeOldDatabase = async(databaseName) =>{
     try{
+        const currentDate = moment();
         const dateDelete = currentDate.subtract(8, 'days');
         const todayremove = dateDelete.format('YYYYMMDD');
         const removePath = `${dir}/${databaseName}_${todayremove}.sql`;
